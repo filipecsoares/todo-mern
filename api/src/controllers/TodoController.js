@@ -20,6 +20,11 @@ class TodoController {
         const todo = await Todo.deleteOne({_id: req.params.id});
         return res.json(todo);
     }
+
+    async update(req, res) {
+        const todo = await Todo.updateOne({_id: req.params.id}, {title: req.body.title, done: req.body.done});
+        return res.json(todo);
+    }
 }
 
 module.exports = new TodoController();
