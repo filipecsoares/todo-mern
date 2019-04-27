@@ -12,7 +12,12 @@ class TodoController {
     }
 
     async findAll(req, res) {
-        const todo = await Todo.find();
+        const todos = await Todo.find();
+        return res.json(todos);
+    }
+
+    async delete(req, res) {
+        const todo = await Todo.deleteOne({_id: req.params.id});
         return res.json(todo);
     }
 }
