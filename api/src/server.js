@@ -13,12 +13,8 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 app.use(cors());
-
-app.use('/', (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\n');
-  });
+app.use(express.json());
+app.use(require('./routes'));
 
 app.listen(PORT, function(){
   console.log('Server is running on Port:',PORT);
